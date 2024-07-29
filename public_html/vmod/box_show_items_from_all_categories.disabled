@@ -13,14 +13,6 @@
     <function>number()</function>
   </setting>
 
-  <install><![CDATA[
-        <?phptry {database::query("INSERT INTO ". DB_TABLE_PREFIX ."settings (`setting_group_key`, `type`, `key`,`value`, `title`, `description`,`function`, `priority`) VALUES ('listings', 'local', 'vmodcfg_scoip_num_items_per_category','{setting:num_item}', 'Num Items per Category for Show Categories on Index Page', 'The number of items to be shown per category','number()', 0);");} catch (Exception $e) {error_log('Error during installation: ' . $e->getMessage());throw $e;}?>
-  ]]></install>
-
-  <uninstall><![CDATA[
-        <?phptry {database::query("DELETE FROM ". DB_TABLE_PREFIX ."settings WHERE `key` = 'vmodcfg_scoip_num_items_per_category';");} catch (Exception $e) {error_log('Error during uninstallation: ' . $e->getMessage());throw $e;}?>
-  ]]></uninstall>
-
   <file name="includes/templates/default.catalog/pages/index.inc.php">
 
     <operation method="after" type="multiline" onerror="cancel">
